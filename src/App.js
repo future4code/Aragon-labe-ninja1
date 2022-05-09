@@ -6,15 +6,19 @@ import HomePage from './components/Pages/HomePage';
 
 class App extends Component {
   state = {
-    currentScreen: "homepage"
+    currentScreen: "carrinhodecompras"
   }
+
+ goToContratarJob = () => {
+   this.setState({currentScreen : "contratarjob"})
+ }
 
   selectPage = () => {
     switch (this.state.currentScreen) {
       case "homepage":
         return <HomePage />
       case "carrinhodecompras":
-        return <CarrinhoDeCompras />
+        return <CarrinhoDeCompras goToContratarJob={this.goToContratarJob}/>
       case "contratarjob":
         return <ContratarJob />
       case "cadastrarjob":
