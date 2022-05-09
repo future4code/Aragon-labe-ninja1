@@ -4,7 +4,9 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                Homepage
+                <h1>Bem-vindo a LabeNinjas!</h1>
+                <button>Cadastrar Job</button>
+                <button>Contratar Job</button>
             </div>
         );
     }
