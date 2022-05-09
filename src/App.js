@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Cabecalho from './components/Pages/Cabecalho';
 import CadastrarJob from './components/Pages/CadastrarJob';
 import CarrinhoDeCompras from './components/Pages/CarrinhoDeCompras';
 import ContratarJob from './components/Pages/ContratarJob';
@@ -8,6 +9,12 @@ class App extends Component {
   state = {
     currentScreen: "homepage"
   }
+goToHomePage = () => {
+  this.setState({currentScreen: "homepage"})
+}
+goToCarrinhoDeCompras = () => {
+  this.setState({currentScreen: "carrinhodecompras"})
+}
 
   selectPage = () => {
     switch (this.state.currentScreen) {
@@ -27,6 +34,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Cabecalho goToHomePage={this.goToHomePage} goToCarrinhoDeCompras={this.goToCarrinhoDeCompras}/>
         {this.selectPage()}
       </div>
     );
