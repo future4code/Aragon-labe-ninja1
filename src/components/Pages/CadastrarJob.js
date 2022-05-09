@@ -4,7 +4,8 @@ class CadastrarJob extends Component {
     render() {
         return (
             <div>
-                Cadastrar job
+                <h1>Cadastrar um novo job</h1>
+                <p>Formulário</p>
             </div>
         );
     }

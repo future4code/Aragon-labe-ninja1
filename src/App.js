@@ -6,8 +6,9 @@ import HomePage from './components/Pages/HomePage';
 
 class App extends Component {
   state = {
-    currentScreen: "homepage"
+    currentScreen: "cadastrarjob"
   }
+
 
   selectPage = () => {
     switch (this.state.currentScreen) {
