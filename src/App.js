@@ -15,6 +15,7 @@ goToHomePage = () => {
 goToCarrinhoDeCompras = () => {
   this.setState({currentScreen: "carrinhodecompras"})
 }
+
   selectPage = () => {
     switch (this.state.currentScreen) {
       case "homepage":
