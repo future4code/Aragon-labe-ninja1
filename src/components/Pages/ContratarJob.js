@@ -4,7 +4,9 @@ class ContratarJob extends Component {
     render() {
         return (
             <div>
-                contratarjob
+                <h2>Busca por jobs</h2>
+                <hr />
+                <h2>Lista de jobs</h2>
             </div>
         );
     }

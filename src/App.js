@@ -7,6 +7,7 @@ import HomePage from './components/Pages/HomePage';
 
 class App extends Component {
   state = {
+    
     currentScreen: "carrinhodecompras"
   }
 goToHomePage = () => {
@@ -23,6 +24,7 @@ goToCarrinhoDeCompras = () => {
 
   goToCadastrarJob = () => {
     this.setState({currentScreen : "cadastrarjob"})
+
   }
 
   selectPage = () => {
