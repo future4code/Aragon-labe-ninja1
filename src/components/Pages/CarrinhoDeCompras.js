@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class CarrinhoDeCompras extends Component {
-    
+class CarrinhoDeCompras extends React.Component {
+
 
     render() {
         return (

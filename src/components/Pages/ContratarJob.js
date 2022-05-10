@@ -1,12 +1,72 @@
-import React, { Component } from 'react';
+import React from 'react'
+import axios from 'axios'
+import { headersInput } from '../Constants/HeadersInput'
+import { BASE_URL } from '../Constants/Url'
+import converteData from '../Utils/converteData'
 
-class ContratarJob extends Component {
+class ContratarJob extends React.Component {
+
+    state = {
+        jobs: []
+    }
+
+    componentDidMount() {
+        this.listaJobs()
+    }
+
+    listaJobs = () => {
+        axios.get(`${BASE_URL}/jobs`, headersInput)
+            .then((response) => {
+                this.setState({ jobs: response.data.jobs })
+            })
+            .catch((error) => {
+                alert(error.response)
+            })
+    }
+
+    deletaJob = (id) => {
+        if (window.confirm("Tem certeza que deseja remover este job?")) {
+            axios.delete(`${BASE_URL}/jobs/${id}`, headersInput)
+                .then(() => {
+                    alert(`Job excluído com sucesso!`)
+                    this.listaJobs()
+                })
+                .catch((error) => {
+                    alert(error.response)
+                })
+        }
+    }
+
+
+
     render() {
+
+        const allJobs = this.state.jobs.map((job) => {
+            return (
+                <div key={job.id}>
+                    <h3>{job.title}</h3>
+                    <p>Preço: R$ {job.price.toFixed(2)}</p>
+                    <p>Prazo: {converteData(job.dueDate)}</p>
+
+                    <button onClick={() => this.props.goToDetalheJob(job.id)}
+                    >
+                    Ver detalhes</button>
+                    <button
+                        onClick={() => this.deletaJob(job.id)}
+                    >
+                        Remover Job</button>
+                    <button>Adicionar ao carrinho</button>
+                    <hr />
+                </div>
+            )
+        })
+
         return (
             <div>
                 <h2>Busca por jobs</h2>
                 <hr />
-                <h2>Lista de jobs</h2>
+
+                {allJobs}
             </div>
         );
     }
