@@ -4,7 +4,9 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                Homepage
+                <h1>Bem-vindo a LabeNinjas!</h1>
+                <button onClick={() => this.props.goToContratarJob()}>Contratar Job</button>
+                <button onClick={() => this.props.goToCadastrarJob()}>Cadastrar Job</button>
             </div>
         );
     }
