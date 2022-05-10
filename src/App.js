@@ -16,9 +16,6 @@ goToCarrinhoDeCompras = () => {
   this.setState({currentScreen: "carrinhodecompras"})
 }
 
- goToContratarJob = () => {
-   this.setState({currentScreen : "contratarjob"})
- }
 
   goToContratarJob = () => {
     this.setState({currentScreen : "contratarjob"})
