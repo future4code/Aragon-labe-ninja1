@@ -27,6 +27,7 @@ goToCarrinhoDeCompras = () => {
 
   }
 
+
   selectPage = () => {
     switch (this.state.currentScreen) {
       case "homepage":
