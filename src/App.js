@@ -9,9 +9,6 @@ class App extends Component {
     currentScreen: "carrinhodecompras"
   }
 
- goToContratarJob = () => {
-   this.setState({currentScreen : "contratarjob"})
- }
 
   selectPage = () => {
     switch (this.state.currentScreen) {
