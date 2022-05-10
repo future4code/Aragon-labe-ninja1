@@ -20,10 +20,20 @@ goToCarrinhoDeCompras = () => {
    this.setState({currentScreen : "contratarjob"})
  }
 
+  goToContratarJob = () => {
+    this.setState({currentScreen : "contratarjob"})
+  }
+
+  goToCadastrarJob = () => {
+    this.setState({currentScreen : "cadastrarjob"})
+  }
+
   selectPage = () => {
     switch (this.state.currentScreen) {
       case "homepage":
-        return <HomePage />
+        return <HomePage 
+        goToContratarJob = {this.goToContratarJob}
+        goToCadastrarJob = {this.goToCadastrarJob}/>
       case "carrinhodecompras":
         return <CarrinhoDeCompras goToContratarJob={this.goToContratarJob}/>
       case "contratarjob":
