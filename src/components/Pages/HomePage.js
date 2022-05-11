@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class HomePage extends Component {
+
+class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <h1>Bem-vindo a LabeNinjas!</h1>
-                <button onClick={() => this.props.goToContratarJob()}>Contratar Job</button>
+                <h2>Bem-vindo a LabeNinjas!</h2>
                 <button onClick={() => this.props.goToCadastrarJob()}>Cadastrar Job</button>
+                <button onClick={() => this.props.goToContratarJob()}>Contratar Job</button>
             </div>
         );
     }

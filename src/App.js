@@ -1,43 +1,52 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Cabecalho from './components/Pages/Cabecalho';
 import CadastrarJob from './components/Pages/CadastrarJob';
 import CarrinhoDeCompras from './components/Pages/CarrinhoDeCompras';
 import ContratarJob from './components/Pages/ContratarJob';
 import HomePage from './components/Pages/HomePage';
+import DetalheJob from './components/Pages/DetalheJob';
 
-class App extends Component {
+class App extends React.Component {
   state = {
-    
-    currentScreen: "carrinhodecompras"
+    currentScreen: "homepage",
+    detalhesJobId: ""
   }
-goToHomePage = () => {
-  this.setState({currentScreen: "homepage"})
-}
-goToCarrinhoDeCompras = () => {
-  this.setState({currentScreen: "carrinhodecompras"})
-}
 
+  goToHomePage = () => {
+    this.setState({ currentScreen: "homepage" })
+  }
+  goToCarrinhoDeCompras = () => {
+    this.setState({ currentScreen: "carrinhodecompras" })
+  }
 
   goToContratarJob = () => {
-    this.setState({currentScreen : "contratarjob"})
+    this.setState({ currentScreen: "contratarjob" })
   }
 
   goToCadastrarJob = () => {
-    this.setState({currentScreen : "cadastrarjob"})
-
+    this.setState({ currentScreen: "cadastrarjob" })
   }
 
+  goToDetalheJob = (jobId) => {
+    // console.log(jobId)
+    this.setState({ currentScreen: "detalhejob" , detalhesJobId: jobId })
+
+  }
 
   selectPage = () => {
     switch (this.state.currentScreen) {
       case "homepage":
-        return <HomePage 
-        goToContratarJob = {this.goToContratarJob}
-        goToCadastrarJob = {this.goToCadastrarJob}/>
+        return <HomePage
+          goToContratarJob={this.goToContratarJob}
+          goToCadastrarJob={this.goToCadastrarJob} />
       case "carrinhodecompras":
-        return <CarrinhoDeCompras goToContratarJob={this.goToContratarJob}/>
+        return <CarrinhoDeCompras goToContratarJob={this.goToContratarJob} />
       case "contratarjob":
-        return <ContratarJob />
+        return <ContratarJob 
+        goToDetalheJob={this.goToDetalheJob} 
+        />
+      case "detalhejob":
+        return <DetalheJob detalhesJobId={this.state.detalhesJobId} />
       case "cadastrarjob":
         return <CadastrarJob />
       default:
@@ -48,7 +57,7 @@ goToCarrinhoDeCompras = () => {
   render() {
     return (
       <div>
-        <Cabecalho goToHomePage={this.goToHomePage} goToCarrinhoDeCompras={this.goToCarrinhoDeCompras}/>
+        <Cabecalho goToHomePage={this.goToHomePage} goToCarrinhoDeCompras={this.goToCarrinhoDeCompras} />
         {this.selectPage()}
       </div>
     );

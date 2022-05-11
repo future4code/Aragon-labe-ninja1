@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../Constants/Url'
 import { headersInput } from '../Constants/HeadersInput'
 
-class CadastrarJob extends Component {
+class CadastrarJob extends React.Component {
     state = {
         titulo: "",
         descricao: "",
@@ -12,26 +12,10 @@ class CadastrarJob extends Component {
         data: ""
     }
 
-    // alteraTitulo = (event) => {
-    //     this.setState({ titulo: event.target.value })
-    // }
-
-    // alteraDescricao = (event) => {
-    //     this.setState({ descricao: event.target.value })
-    // }
-
-    // alteraPreco = (event) => {
-    //     this.setState({ preco: event.target.value })
-    // }
-
     alteraMetodoPagamento = (event) => {
         const metodo = [event.target.value]
         this.setState({ metodoPagamento: metodo })
     }
-
-    // alteraData = (event) => {
-    //     this.setState({ data: event.target.value })
-    // }
 
     alteraEstados = (event) => {
         this.setState({ [event.target.name]: event.target.value });
@@ -47,7 +31,7 @@ class CadastrarJob extends Component {
             dueDate: this.state.data,
             paymentMethods: this.state.metodoPagamento,
         };
-        axios.post(`${BASE_URL}/jobs`, body, headersInput )
+        axios.post(`${BASE_URL}/jobs`, body, headersInput)
             .then(() => {
                 alert(`O serviço ${this.state.titulo} foi criado com sucesso!`);
                 this.setState({
@@ -63,10 +47,12 @@ class CadastrarJob extends Component {
             })
     }
 
+
+
     render() {
         return (
             <div>
-                <h1>Cadastrar um novo job</h1>
+                <h1>Cadastrar um Novo Job</h1>
                 <section>
                     <label>
                         Título:
@@ -102,7 +88,7 @@ class CadastrarJob extends Component {
                 <h2>Formas de Pagamento</h2>
                 <section>
                     <select onChange={this.alteraMetodoPagamento}>
-                        <option selected disabled>Selecione uma opção...</option>
+                        <option value disabled>Selecione uma opção...</option>
                         <option value={"boleto"}>
                             Boleto
                         </option>
@@ -123,12 +109,12 @@ class CadastrarJob extends Component {
                     <br />
                     <label>
                         Data:
-                        <input 
-                        id={"data"} 
-                        name= {"data"}
-                        type="date" 
-                        value={this.state.data} 
-                        onChange={this.alteraEstados}
+                        <input
+                            id={"data"}
+                            name={"data"}
+                            type="date"
+                            value={this.state.data}
+                            onChange={this.alteraEstados}
                         />
                     </label>
                     <br />
