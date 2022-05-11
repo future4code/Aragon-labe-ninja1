@@ -4,6 +4,8 @@ import { headersInput } from '../Constants/HeadersInput'
 import { BASE_URL } from '../Constants/Url'
 import converteData from '../Utils/converteData'
 
+
+
 class ContratarJob extends React.Component {
 
     state = {
@@ -37,7 +39,24 @@ class ContratarJob extends React.Component {
         }
     }
 
+    adicionarAoCarrinho = (foiAdicionado, id) => {
 
+        const body = {
+            taken: foiAdicionado
+        }
+
+        axios.post(`${BASE_URL}/jobs/${id}`, body, headersInput)
+            .then(() => {
+                foiAdicionado ?
+                    alert("Job adicionado ao carrinho!")
+                    : alert("Job excluído do carrinho!")
+                this.listaJobs()
+            })
+            .catch((error) => {
+                console.log(error)
+                alert(error)
+            })
+    }
 
     render() {
 
@@ -50,12 +69,16 @@ class ContratarJob extends React.Component {
 
                     <button onClick={() => this.props.goToDetalheJob(job.id)}
                     >
-                    Ver detalhes</button>
+                        Ver detalhes</button>
                     <button
                         onClick={() => this.deletaJob(job.id)}
                     >
                         Remover Job</button>
-                    <button>Adicionar ao carrinho</button>
+
+
+                    {job.taken ?  
+                        <button onClick={()=>this.adicionarAoCarrinho(false,job.id)}>Remover do carrinho</button>
+                        :<button onClick={()=>this.adicionarAoCarrinho(true,job.id)}>Adicionar ao carrinho</button>}
                     <hr />
                 </div>
             )
