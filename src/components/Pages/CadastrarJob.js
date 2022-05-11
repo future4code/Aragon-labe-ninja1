@@ -12,6 +12,11 @@ class CadastrarJob extends React.Component {
         data: ""
     }
 
+    // alteraMetodoPagamento = (event) => {
+    //     const metodo = [event.target.value]
+    //     this.setState({ metodoPagamento: metodo })
+    // }
+
     alteraMetodoPagamento = (event) => {
         const metodo = [event.target.value]
         this.setState({ metodoPagamento: metodo })
@@ -98,8 +103,8 @@ class CadastrarJob extends React.Component {
                         <option value={"debito"}>
                             Débito
                         </option>
-                        <option value={"paypall"}>
-                            PayPall
+                        <option value={"paypal"}>
+                            PayPal
                         </option>
                         <option value={"pix"}>
                             Pix

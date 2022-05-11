@@ -4,8 +4,6 @@ import { headersInput } from '../Constants/HeadersInput'
 import { BASE_URL } from '../Constants/Url'
 import converteData from '../Utils/converteData'
 
-
-
 class ContratarJob extends React.Component {
 
     state = {
@@ -22,6 +20,7 @@ class ContratarJob extends React.Component {
                 this.setState({ jobs: response.data.jobs })
             })
             .catch((error) => {
+                console.log(this.state.jobs)
                 alert(error.response)
             })
     }
