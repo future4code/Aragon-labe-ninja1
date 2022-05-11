@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { headersInput } from '../Constants/HeadersInput';
 import { BASE_URL } from '../Constants/Url';
+import converteData from '../Utils/converteData'
 
 class DetalheJob extends React.Component {
 
@@ -31,6 +32,7 @@ class DetalheJob extends React.Component {
             <div key={this.state.job.id}>
                 <h3>{this.state.job.title}</h3>
                 <p>Preço: R$ {this.state.job.price},00</p>
+                {this.state.job.dueDate && <p>Prazo: {converteData(this.state.job.dueDate)}</p>}
                 <p>Descrição: {this.state.job.description}</p>
                 <h4>Formas de Pagamento</h4>
                 <ul>
