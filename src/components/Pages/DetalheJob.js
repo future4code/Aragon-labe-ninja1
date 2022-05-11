@@ -18,6 +18,7 @@ class DetalheJob extends React.Component {
             .then((response) => {
                 this.setState({ job: response.data })
                 console.log(this.state.job.paymentMethods)
+                console.log(response)
             })
             .catch((error) => {
                 alert(error.response)
@@ -33,8 +34,13 @@ class DetalheJob extends React.Component {
                 <p>Descrição: {this.state.job.description}</p>
                 <h4>Formas de Pagamento</h4>
                 <ul>
-                    Métodos de pagamento xyz
+                    <li>
+                        {this.state.job.paymentMethods}
+                    </li>
                 </ul>
+                <button onClick={() => this.props.goToContratarJob()}>   
+                    Voltar para lista de jobs               
+                </button>
             </div>
         )
 

@@ -15,6 +15,7 @@ class App extends React.Component {
   goToHomePage = () => {
     this.setState({ currentScreen: "homepage" })
   }
+
   goToCarrinhoDeCompras = () => {
     this.setState({ currentScreen: "carrinhodecompras" })
   }
@@ -29,7 +30,7 @@ class App extends React.Component {
 
   goToDetalheJob = (jobId) => {
     // console.log(jobId)
-    this.setState({ currentScreen: "detalhejob" , detalhesJobId: jobId })
+    this.setState({ currentScreen: "detalhejob", detalhesJobId: jobId })
 
   }
 
@@ -42,11 +43,14 @@ class App extends React.Component {
       case "carrinhodecompras":
         return <CarrinhoDeCompras goToContratarJob={this.goToContratarJob} />
       case "contratarjob":
-        return <ContratarJob 
-        goToDetalheJob={this.goToDetalheJob} 
+        return <ContratarJob
+          goToDetalheJob={this.goToDetalheJob}
         />
       case "detalhejob":
-        return <DetalheJob detalhesJobId={this.state.detalhesJobId} />
+        return <DetalheJob 
+        goToContratarJob={this.goToContratarJob}
+        detalhesJobId={this.state.detalhesJobId} 
+        />
       case "cadastrarjob":
         return <CadastrarJob />
       default:
