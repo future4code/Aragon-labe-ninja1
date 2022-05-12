@@ -34,28 +34,43 @@ class CarrinhoDeCompras extends React.Component {
 
     removeJobCarrinho = (id) => {
         const body = {
-            taken:false
+            taken: false
         }
-        axios.post(`${BASE_URL}/jobs/${id}`,body,headersInput)
-        .then(()=>{
-            alert("Job removido do carrinho")
-            this.listaJobsCarrinho()
-        })
-        .catch((error)=>{
-            console.log(error)
-            alert("tente novamente")
-        })
+        axios.post(`${BASE_URL}/jobs/${id}`, body, headersInput)
+            .then(() => {
+                alert("Job removido do carrinho")
+                this.listaJobsCarrinho()
+            })
+            .catch((error) => {
+                console.log(error)
+                alert("tente novamente")
+            })
     }
 
+    finalizaCompra = () => {
+        const body = {
+            taken: false
+        }
+        for (let job of this.state.carrinho) {
+            axios
+                .post(`${BASE_URL}/jobs/${job.id}`, body, headersInput)
+                .then()
+                .catch((error) => {
+                    alert(error.response)
+                })
+        }
+        alert("pedido finalizado com sucesso")
+        this.listaJobsCarrinho()
+    }
 
     render() {
-        const jobsNoCarrinho = this.state.carrinho.map((job)=>{
-            return(
+        const jobsNoCarrinho = this.state.carrinho.map((job) => {
+            return (
                 <div key={job.id}>
                     <span>   {job.title} - </span>
                     <span>  R$ {job.price.toFixed(2)} - </span>
-                    <button onClick={()=>this.removeJobCarrinho(job.id)}>Remover do carrinho</button>
-                    <hr/>
+                    <button onClick={() => this.removeJobCarrinho(job.id)}>Remover do carrinho</button>
+                    <hr />
                 </div>
             )
         })
@@ -63,11 +78,11 @@ class CarrinhoDeCompras extends React.Component {
             <div>
                 <section>
                     <h2>Dados da compra</h2>
-                    
+
                     <p>Preço total: R$ {this.state.precoTotal.toFixed(2)}</p>
                     <button onClick={() => this.props.goToContratarJob()}>
                         Voltar para lista de jobs</button>
-                    <button>Finalizar compra</button>
+                    <button onClick={() => this.finalizaCompra()}>Finalizar compra</button>
                 </section>
                 <hr />
                 <section>
