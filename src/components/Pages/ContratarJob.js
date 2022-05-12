@@ -209,6 +209,7 @@ class ContratarJob extends React.Component {
                 <br />
                 <hr />
                 <section>
+                    { this.state.jobs.length === 0 && <p>Carregando...</p> } 
                     {allJobs}
                 </section>
             </div>
