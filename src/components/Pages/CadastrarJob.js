@@ -7,7 +7,7 @@ class CadastrarJob extends React.Component {
     state = {
         titulo: "",
         descricao: "",
-        preco: 0,
+        preco: "",
         metodoPagamento: [],
         data: ""
     }
@@ -18,7 +18,7 @@ class CadastrarJob extends React.Component {
     // }
 
     alteraMetodoPagamento = (event) => {
-        const metodo = [event.target.value]
+        const metodo = Array.from(event.target.selectedOptions, option => option.value)
         this.setState({ metodoPagamento: metodo })
     }
 
@@ -42,7 +42,7 @@ class CadastrarJob extends React.Component {
                 this.setState({
                     titulo: "",
                     descricao: "",
-                    preco: 0,
+                    preco: "",
                     metodoPagamento: [],
                     data: ""
                 })
@@ -92,21 +92,25 @@ class CadastrarJob extends React.Component {
                 </section>
                 <h2>Formas de Pagamento</h2>
                 <section>
-                    <select onChange={this.alteraMetodoPagamento}>
+                    <select 
+                    name={"metodoPagamento"}
+                    onChange={this.alteraMetodoPagamento}
+                    multiple
+                    >
                         <option value disabled>Selecione uma opção...</option>
-                        <option value={"boleto"}>
+                        <option value={"Boleto"}>
                             Boleto
                         </option>
-                        <option value={"credito"}>
+                        <option value={"Crédito"}>
                             Crédito
                         </option>
-                        <option value={"debito"}>
+                        <option value={"Débito"}>
                             Débito
                         </option>
-                        <option value={"paypal"}>
+                        <option value={"Paypal"}>
                             PayPal
                         </option>
-                        <option value={"pix"}>
+                        <option value={"Pix"}>
                             Pix
                         </option>
                     </select>

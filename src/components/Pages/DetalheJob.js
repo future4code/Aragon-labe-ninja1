@@ -28,6 +28,8 @@ class DetalheJob extends React.Component {
 
     render() {
 
+        
+
         return (
             <div key={this.state.job.id}>
                 <h3>{this.state.job.title}</h3>
@@ -36,9 +38,13 @@ class DetalheJob extends React.Component {
                 <p>Descrição: {this.state.job.description}</p>
                 <h4>Formas de Pagamento</h4>
                 <ul>
-                    <li>
-                        {this.state.job.paymentMethods}
-                    </li>
+                    {this.state.job.paymentMethods && this.state.job.paymentMethods.map((metodo) => {
+                        return (
+                            <li key={metodo}>
+                                {metodo}
+                            </li>
+                        )
+                    })}
                 </ul>
                 <button onClick={() => this.props.goToContratarJob()}>   
                     Voltar para lista de jobs               
