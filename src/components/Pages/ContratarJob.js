@@ -184,7 +184,7 @@ class ContratarJob extends React.Component {
                         name={"ordenar"}
                         onChange={this.alteraValoresInput}
                     >
-                        <option selected value>
+                        <option value disabled>
                             Selecione uma opção...
                         </option>
                         <option value="">
