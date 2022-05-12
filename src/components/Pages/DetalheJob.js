@@ -28,28 +28,31 @@ class DetalheJob extends React.Component {
 
     render() {
 
-        
+
 
         return (
-            <div key={this.state.job.id}>
-                <h3>{this.state.job.title}</h3>
-                <p>Preço: R$ {this.state.job.price},00</p>
-                {this.state.job.dueDate && <p>Prazo: {converteData(this.state.job.dueDate)}</p>}
-                <p>Descrição: {this.state.job.description}</p>
-                <h4>Formas de Pagamento</h4>
-                <ul>
-                    {this.state.job.paymentMethods && this.state.job.paymentMethods.map((metodo) => {
-                        return (
-                            <li key={metodo}>
-                                {metodo}
-                            </li>
-                        )
-                    })}
-                </ul>
-                <button onClick={() => this.props.goToContratarJob()}>   
-                    Voltar para lista de jobs               
-                </button>
-            </div>
+            <section>
+                {/* {this.state.job.length === 0 && <p>Carregando...</p>} dúvida */}
+                <div key={this.state.job.id}>
+                    <h3>{this.state.job.title}</h3>
+                    <p>Preço: R$ {this.state.job.price},00</p>
+                    {this.state.job.dueDate && <p>Prazo: {converteData(this.state.job.dueDate)}</p>}
+                    <p>Descrição: {this.state.job.description}</p>
+                    <h4>Formas de Pagamento</h4>
+                    <ul>
+                        {this.state.job.paymentMethods && this.state.job.paymentMethods.map((metodo) => {
+                            return (
+                                <li key={metodo}>
+                                    {metodo}
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    <button onClick={() => this.props.goToContratarJob()}>
+                        Voltar para lista de jobs
+                    </button>
+                </div>
+            </section>
         )
 
     }
