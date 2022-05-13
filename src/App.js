@@ -5,6 +5,14 @@ import CarrinhoDeCompras from './components/Pages/CarrinhoDeCompras';
 import ContratarJob from './components/Pages/ContratarJob';
 import HomePage from './components/Pages/HomePage';
 import DetalheJob from './components/Pages/DetalheJob';
+import styled from 'styled-components';
+
+const CardApp = styled.div`
+
+  * {
+      font-family: Arial;
+   }
+`
 
 class App extends React.Component {
   state = {
@@ -60,10 +68,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <CardApp>
         <Cabecalho goToHomePage={this.goToHomePage} goToCarrinhoDeCompras={this.goToCarrinhoDeCompras} />
         {this.selectPage()}
-      </div>
+      </CardApp>
     );
   }
 }

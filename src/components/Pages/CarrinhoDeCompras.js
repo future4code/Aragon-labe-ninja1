@@ -2,6 +2,70 @@ import axios from 'axios';
 import React from 'react';
 import { headersInput } from '../Constants/HeadersInput';
 import { BASE_URL } from '../Constants/Url';
+import styled from 'styled-components';
+
+const Carrinho = styled.div`
+    .produto-carrinho {
+        margin: 10px;
+        border: 1px solid black;
+        padding: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* background-color: #EF5871; */
+        background-color: white;
+        box-shadow: #EA2949 0 0 3px;
+        border: none;
+        border-radius: 15px;
+        color: black;
+        /* font-weight: bold; */
+    }
+
+    .titulo-carrinho {
+        text-align: center;
+        margin: 10px;
+    }
+
+    .titulo {
+        margin-right: 30px;
+    }
+
+    .resumo-compra {
+        margin: 10px;
+        border: 1px solid black;
+        padding: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        /* background-color: #EF5871; */
+        background-color: white;
+        box-shadow: #EA2949 0 0 3px;
+        border: none;
+        border-radius: 15px;
+        color: black;
+        /* font-weight: bold; */
+    }
+
+    .botao-carrinho {
+        background-color: lightpink;
+        color: black;
+        border: none;
+        border-radius: 15px;
+        width: 20%;
+        height: 25px;
+        font-size: 1rem;
+    }
+
+    .botao-carrinho:hover {
+        cursor: pointer;
+        color: white;
+        background-color: #EA2949;
+        font-weight: bold;
+        border: 1px solid white;
+    }
+
+`
 
 class CarrinhoDeCompras extends React.Component {
     state = {
@@ -66,30 +130,30 @@ class CarrinhoDeCompras extends React.Component {
     render() {
         const jobsNoCarrinho = this.state.carrinho.map((job) => {
             return (
-                <div key={job.id}>
-                    <span>   {job.title} - </span>
-                    <span>  R$ {job.price.toFixed(2)} - </span>
-                    <button onClick={() => this.removeJobCarrinho(job.id)}>Remover do carrinho</button>
-                    <hr />
+                <div className='produto-carrinho' key={job.id}>
+                    <div>
+                    <span className='titulo'>{job.title}</span>
+                    <span>R$ {job.price.toFixed(2)}</span>
+                    </div>
+                    <button className='botao-carrinho' onClick={() => this.removeJobCarrinho(job.id)}>Remover do carrinho</button>
                 </div>
             )
         })
         return (
-            <div>
+            <Carrinho>
+                <h2 className='titulo-carrinho'>Carrinho</h2>
                 <section>
-                    <h2>Dados da compra</h2>
-
-                    <p>Preço total: R$ {this.state.precoTotal.toFixed(2)}</p>
-                    <button onClick={() => this.props.goToContratarJob()}>
-                        Voltar para lista de jobs</button>
-                    <button onClick={() => this.finalizaCompra()}>Finalizar compra</button>
-                </section>
-                <hr />
-                <section>
-                    <h2>Carrinho</h2>
                     {jobsNoCarrinho}
                 </section>
-            </div>
+                <section className='resumo-compra'>
+                    <h3>Resumo da compra</h3>
+                    <p>Total: R$ {this.state.precoTotal.toFixed(2)}</p>
+                    <button className='botao-carrinho' onClick={() => this.props.goToContratarJob()}>
+                        Continuar comprando
+                    </button>
+                    <button className='botao-carrinho' onClick={() => this.finalizaCompra()}>Finalizar compra</button>
+                </section>
+            </Carrinho>
         );
     }
 }
